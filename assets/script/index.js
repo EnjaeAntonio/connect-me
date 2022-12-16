@@ -69,6 +69,19 @@ const loginInfo = JSON.parse(localStorage.getItem('loginInfo')) || [];
                 loginInfo.push(login);
                 localStorage.setItem('loginInfo', JSON.stringify(loginInfo))
                 console.log(loginInfo)
+                
+                loadScreen.classList.remove('hidden');
+                       setTimeout(() => {
+                        window.open(
+                                './home.html',
+                                '_blank'
+                              );
+                              loadScreen.classList.add('hidden');
+
+                       }, 2000) 
+                        errorOutput.innerText = '';
+                        errorOutput.innerText = 'Success!';
+
                 errorOutput.innerText = 'Profile created!';
         }
 });
