@@ -20,31 +20,12 @@ const createBtn = select('.user-create');
 const emailRegex = /^(?=^.{8,}$)[-_A-Za-z0-9]+([_.-][a-zA-Z0-9]+)*@[A-Za-z0-9]+([.-][a-zA-Z0-9]+)*\.[A-Za-z]{2,}$/;
 
 
-const loginInfo = JSON.parse(localStorage.getItem('login')) || [];
 
 
 
-function setLogin() {
 
-        const login = {
-                email: userEmail.value,
-                password: userPassword.value
-            };
 
-        loginInfo.push(login);
-        localStorage.setItem('loginInfo', JSON.stringify(loginInfo));
-
-}
-
-function displayLogin() {
-        const loginInfo = JSON.parse(localStorage.getItem('loginInfo')) || [];
-        console.log(loginInfo)
-}
-
-displayLogin();
-
-onEvent('click', loginBtn, function(){
-        const loginInfo = JSON.parse(localStorage.getItem('loginInfo')) || [];
+onEvent('click', loginBtn, function(event){
         event.preventDefault();
         loginInfo.forEach(element => {
 
@@ -66,18 +47,33 @@ onEvent('click', loginBtn, function(){
         });
 });
 
-onEvent('click', createBtn, function(){
+
+const loginInfo = JSON.parse(localStorage.getItem('loginInfo')) || [];
+
+        onEvent('click', createBtn, function(event){
+      
+        const login = {
+                email: userEmail.value,
+                password: userPassword.value
+        }
+
+       
+      
         event.preventDefault();
 
-        if(userEmail.value === '' && userPassword.value === '') {
+        if(userEmail.value === '' || userPassword.value === '') {
                 errorOutput.innerText = 'Credentials Empty!';
         } else if (!emailRegex.test(userEmail.value)) {
                 errorOutput.innerText = 'Enter a valid email!';
         } else {
+                loginInfo.push(login);
+                localStorage.setItem('loginInfo', JSON.stringify(loginInfo))
+                console.log(loginInfo)
                 errorOutput.innerText = 'Profile created!';
-                setLogin();
         }
 });
+console.log(loginInfo)
+
 
 const showPw = select('.fa-eye')
 onEvent('click', showPw, function(){
