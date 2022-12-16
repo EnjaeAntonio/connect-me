@@ -19,12 +19,6 @@ const createBtn = select('.user-create');
 
 const emailRegex = /^(?=^.{8,}$)[-_A-Za-z0-9]+([_.-][a-zA-Z0-9]+)*@[A-Za-z0-9]+([.-][a-zA-Z0-9]+)*\.[A-Za-z]{2,}$/;
 
-
-
-
-
-
-
 onEvent('click', loginBtn, function(event){
         event.preventDefault();
         loginInfo.forEach(element => {
@@ -39,10 +33,9 @@ onEvent('click', loginBtn, function(event){
                               loadScreen.classList.add('hidden');
 
                        }, 2000) 
-                        errorOutput.innerText = '';
                         errorOutput.innerText = 'Success!';
                 }else {
-                        errorOutput.innerText = 'Invalid Credentials';
+                        errorOutput.innerText = 'Email or password is invalid!';
                 }
         });
 });
@@ -58,17 +51,16 @@ const loginInfo = JSON.parse(localStorage.getItem('loginInfo')) || [];
         }
 
        
-      
         event.preventDefault();
 
-        if(userEmail.value === '' || userPassword.value === '') {
-                errorOutput.innerText = 'Credentials Empty!';
-        } else if (!emailRegex.test(userEmail.value)) {
-                errorOutput.innerText = 'Enter a valid email!';
+        if(!emailRegex.test(userEmail.value)) {
+                errorOutput.innerText = 'Email is not valid!';
+        } else if (userPassword.value == '') {
+                errorOutput.innerText = 'Enter a valid password!';
         } else {
                 loginInfo.push(login);
-                localStorage.setItem('loginInfo', JSON.stringify(loginInfo))
-                console.log(loginInfo)
+                localStorage.setItem('loginInfo', JSON.stringify(loginInfo));
+                console.log(loginInfo);
                 errorOutput.innerText = 'Profile created!';
         }
 });
