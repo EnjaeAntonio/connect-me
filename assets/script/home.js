@@ -4,7 +4,6 @@ import {onEvent, select, selectAll, create, log} from './utils.js';
 
 import { User } from './User.js';
 
-import { Subscriber } from './Subscriber.js';
 /*****************************************
         Variables
 *****************************************/
@@ -19,13 +18,6 @@ const errorOutput = select('.error-output');
 *****************************************/
 
 const user = new User(34369, 'Enjae Antonio', 'EnjaeAC', 'enjaeantonio@gmail.com');
-
-
-/*****************************************
-        Creating new Subscriber
-*****************************************/
-
-
 
 /*****************************************
         Post Content
