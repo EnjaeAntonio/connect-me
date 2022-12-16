@@ -134,7 +134,7 @@ onEvent('click', postBtn, function(){
 const genParent = select('.gen-profile');
 
 
-function randomUserGenerator(){
+function getUser(){
         const url = `https://randomuser.me/api/?nat=CA&results=10&`;
 
 const options = {
@@ -146,13 +146,13 @@ const options = {
                 return result.json();
         })
           .then((data) => {
-                showRandomUserData(data);
+                randomUser(data);
         });
       };
 
-randomUserGenerator();
+getUser();
 
-      function showRandomUserData(randomUser){
+      function randomUser(randomUser){
         const users = randomUser.results;
 
         users.forEach(element => {
@@ -172,9 +172,6 @@ randomUserGenerator();
                genParent.append(genUserDiv)
                
         });
-
-              
-      
       };
 
       
