@@ -69,7 +69,6 @@ const loginInfo = JSON.parse(localStorage.getItem('loginInfo')) || [];
 });
 console.log(loginInfo)
 
-
 const showPw = select('.fa-eye')
 onEvent('click', showPw, function(){
           var x = userPassword;

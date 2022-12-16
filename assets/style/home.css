@@ -418,6 +418,7 @@ textarea {
     background-color: #fff;
     width: 100vh;
     margin: 10px 0;
+    padding: 5px 20px;
 }
 
 .content-header {
