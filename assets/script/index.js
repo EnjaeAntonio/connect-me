@@ -22,8 +22,10 @@ const emailRegex = /^(?=^.{8,}$)[-_A-Za-z0-9]+([_.-][a-zA-Z0-9]+)*@[A-Za-z0-9]+(
 onEvent('click', loginBtn, function(event){
         event.preventDefault();
         loginInfo.forEach(element => {
-
-                if(userEmail.value === element.email && userPassword.value === element.password) {
+                if((userEmail.value === '' || userPassword.value === '')){
+                        errorOutput.innerText = 'Login credentials Invalid!'
+                        
+                }else if(userEmail.value === element.email && userPassword.value === element.password) {
                 loadScreen.classList.remove('hidden');
                        setTimeout(() => {
                         window.open(
