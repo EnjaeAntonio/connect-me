@@ -1,5 +1,4 @@
-# connect-me
-# Social Network Page   
+# Connect-Me 
 Click the link <a href='https://enjaeantonio.github.io/connect-me/' >Here</a> to visit my project!
 
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)

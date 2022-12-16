@@ -78,3 +78,16 @@ onEvent('click', createBtn, function(){
                 setLogin();
         }
 });
+
+const showPw = select('.fa-eye')
+onEvent('click', showPw, function(){
+          var x = userPassword;
+        if (x.type === "password") {
+          x.type = "text";
+        } else {
+          x.type = "password";
+        }
+});
+        
+
+
