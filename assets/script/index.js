@@ -54,8 +54,11 @@ const loginInfo = JSON.parse(localStorage.getItem('loginInfo')) || [];
         event.preventDefault();
 
         if(!emailRegex.test(userEmail.value)) {
-                errorOutput.innerText = 'Email is not valid!';
-        } else if (userPassword.value == '') {
+                errorOutput.innerText = 'Credentials invalid!';
+        } else if (!emailRegex.test(userEmail.value)) {
+                errorOutput.innerText = 'Email a valid email!';
+        }
+        else if (userPassword.value == '') {
                 errorOutput.innerText = 'Enter a valid password!';
         } else {
                 loginInfo.push(login);
