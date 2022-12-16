@@ -459,12 +459,14 @@ h4 {
 /* ---------------------------------------------------- */
 
 footer {
-    background-color: var(--app-dark-bg);
+    background-color: #fff;
     display: flex;
     justify-content: center;
+    align-items: center;
     position: relative;
     top: 50vh;
     width: 100%;
+    padding: 20px 0;
 }
 
 .footer-nav{
@@ -481,11 +483,38 @@ footer {
 
 
 .copyright{
+    display: flex;
+    justify-content: center;
     text-align: center;
 }
 
 .footer-icon{
     font-size: 24px;
+}
+
+
+/* ---------------------------------------------------- */
+/* Icons
+/* ---------------------------------------------------- */
+
+.fa-linkedin {
+    color: #0072b1;
+}
+
+.fa-twitter {
+    color: #00acee;
+}
+
+.fa-instagram {
+    color: transparent;
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    background: -webkit-radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+
+.fa-facebook {
+    color: #3b5998;
 }
 
 /* ---------------------------------------------------- */
