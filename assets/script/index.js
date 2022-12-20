@@ -1,6 +1,6 @@
 'use strict';
 
-import {onEvent, select, selectAll, create, log} from './utils.js';
+import {onEvent, select} from './utils.js';
 /*****************************************
         Login Page
 *****************************************/
@@ -45,7 +45,7 @@ onEvent('click', loginBtn, function(event){
 
 const loginInfo = JSON.parse(localStorage.getItem('loginInfo')) || [];
 
-        onEvent('click', createBtn, function(event){
+onEvent('click', createBtn, function(event){
       
         const login = {
                 email: userEmail.value,
@@ -65,13 +65,12 @@ const loginInfo = JSON.parse(localStorage.getItem('loginInfo')) || [];
         } else {
                 loginInfo.push(login);
                 localStorage.setItem('loginInfo', JSON.stringify(loginInfo));
-                console.log(loginInfo);
                 errorOutput.innerText = 'Profile created!';
         }
 });
-console.log(loginInfo)
 
 const showPw = select('.fa-eye')
+
 onEvent('click', showPw, function(){
           var x = userPassword;
         if (x.type === "password") {

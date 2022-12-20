@@ -26,7 +26,6 @@ const user = new User(34369, 'Enjae Antonio', 'EnjaeAC', 'enjaeantonio@gmail.com
 function userPost(){
 
         // Variables for function
-        let userPost = postText.value;
         let todaysDate = new Date();
         let currentTime = new Date();
         let currentHours = currentTime.getHours().toString();
@@ -36,7 +35,7 @@ function userPost(){
         const selectedFile = document.getElementById('file-upload');
    
         // Validating empty fields
-        if (userPost == '' && selectedFile.value == '') {
+        if (postText.value == '' && selectedFile.value == '') {
                 errorOutput.innerText = 'Fields are empty';
 
         }  else if (selectedFile.value) {
@@ -60,7 +59,7 @@ function userPost(){
                         <h4 class="clock">${currentHours}:${currentMinutes} ${ampm}</h4>
                         `;
 
-                // Prepening and also resetting values
+                // Prepending and also resetting values
                 parentPostContent.prepend(newDiv);
                 postText.value = '';
                 document.getElementById('file-upload').value = '';
@@ -69,7 +68,6 @@ function userPost(){
         } else {
 
                 // If a picture is not selected, text box will still post
-                // (I get a bug if a picture is not selected)
                 errorOutput.innerText = '';
                 let newDiv = create('div');
                 newDiv.className = 'content'
@@ -131,12 +129,16 @@ onEvent('click', postBtn, function(){
         userPost();
 });
 
+/*****************************************
+        Generate User
+*****************************************/
+
 const genParent = select('.gen-profile');
 
 
 function getUser(){
-        const url = `https://randomuser.me/api/?nat=CA&results=10&`;
 
+const url = `https://randomuser.me/api/?nat=CA&results=10&`;
 const options = {
         method: 'GET',
         mode: 'cors'
@@ -152,11 +154,11 @@ const options = {
 
 getUser();
 
-      function randomUser(randomUser){
-        const users = randomUser.results;
+function randomUser(randomUser){
+
+const users = randomUser.results;
 
         users.forEach(element => {
-                console.log(element)
                 let genUserDiv = create('div');
                 genUserDiv.className = 'gen-users';
 
