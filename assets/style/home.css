@@ -159,13 +159,12 @@ picture{
 
 .gen-profile {
     right: 20px;
-    overflow-y: scroll;
     background-color: #fff;
-    height: 500px;
     width: 300px;
     display: grid;
     justify-content: center;
     gap: 10px;
+    position: absolute;
 }
 
 .gen-follow {
@@ -452,7 +451,7 @@ textarea {
     display: flex;
 }
 
-h4 {
+.time {
     font-weight: 400;
     color: rgb(65, 65, 65);
     text-align: right;
@@ -485,9 +484,14 @@ footer {
     justify-content: center;
     align-items: center;
     position: relative;
-    top: 50vh;
+    top: 110vh;
     width: 100%;
     padding: 20px 0;
+}
+
+.footer-content {
+    display: grid;
+    justify-content: center;
 }
 
 .footer-nav{
@@ -504,9 +508,9 @@ footer {
 
 
 .copyright{
-    display: flex;
-    justify-content: center;
     text-align: center;
+    font-weight: 400;
+    font-size: .8rem;
 }
 
 .footer-icon{
