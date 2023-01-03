@@ -11,8 +11,10 @@
 main {
     background: url(../img/photo-1448630360428-65456885c650.avif) center center / cover no-repeat;
     height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
     display: grid;
     place-items: center;
+    width: 100%;
 }
 
 .hidden {
@@ -23,6 +25,7 @@ main {
     position: absolute;
     z-index: 1;
     height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
     width: 100%;
     background: rgb(20 24 28 / .8);
     display: grid;
@@ -63,16 +66,11 @@ span {
 }
 
 .login {
-    height: 60vh;
+    height: 65vh;
     width: 70vh;
     right: 55vh;
     background-color: #fff;
     box-shadow: 0 0 10px var(--app-dark-bg);
-}
-
-img {
-    height: 60vh;
-    width: 80vh;
 }
 
 .login-wrapper {
@@ -82,14 +80,18 @@ img {
     padding: 20px;
 }
 
+.login-wrapper h1 {
+    font-size: 1.6rem;
+}
+
 .login-wrapper > * {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 .info {
-    margin-bottom: 30px;
+    font-size: 1.4rem;
+    padding: 10px 0;
 }
-
 
 form {
     display: grid;
@@ -171,13 +173,29 @@ button {
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
-.frgt-pw {
-    display: grid;
-    justify-content: right;
-    padding: 5px 0 20px 0;
+.option-wrap {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.input-wrap {
+    width: 50%;
+}
+
+label {
     font-size: 12px;
-    color: #a4a4a4;
+}
+
+.frgt-pw {
+    width: 50%;
+    text-align: right;
     cursor: pointer;
+}
+
+.frgt-pw h2 {
+    font-size: 12px;
+    font-weight: 400;
+    color: #a4a4a4;
 }
 
 .hint, .error {
@@ -191,11 +209,8 @@ button {
 }
 
 .login-options {
-    display: flex;
-    gap: 15px;
-    position: absolute;
-    bottom: 25%;
     font-size: 14px;
+    margin-top: 22px;
 }
 
 ul {
@@ -205,18 +220,53 @@ ul {
     cursor: pointer;
 }
 
+ul p {
+    color: #000;
+}
+
 li:hover {
     text-decoration: underline var(--app-main-blue);
 }
 
+.img-wrapper {
+    display: grid;
+}
 
 .img-wrapper h1{
+    text-align: right;
     position: absolute;
-    right: 350px;
-    margin-top: 20px;
+    right: 40vh;
+    font-size: 1.6rem;
     background: var(--app-main-blue);
     background: linear-gradient(90deg, rgba(102,162,255,1) 0%, rgba(37,122,255,1) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
+.img-wrapper img {
+    display: block;
+    
+    height: 65vh;
+    width: 100%;
+}
+
+
+@media (max-width: 456px) {
+    .login {
+        height: 80vh;
+        width: 100%;
+    }
+    .img-wrapper img {
+        display: none;
+    }
+
+    .img-wrapper h1 {
+        display: none;
+    }
+
+    .login-wrapper > * {
+        margin-bottom: 20px;
+    }
+    
+
+}

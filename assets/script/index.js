@@ -20,12 +20,12 @@ const createBtn = select('.user-create');
 const emailRegex = /^(?=^.{8,}$)[-_A-Za-z0-9]+([_.-][a-zA-Z0-9]+)*@[A-Za-z0-9]+([.-][a-zA-Z0-9]+)*\.[A-Za-z]{2,}$/;
 
 onEvent('click', loginBtn, function(event){
+        if((userEmail.value === '' && userPassword.value === '')){
+        errorOutput.innerText = 'Login credentials Invalid!'
+        }
         event.preventDefault();
         loginInfo.forEach(element => {
-                if((userEmail.value === '' || userPassword.value === '')){
-                        errorOutput.innerText = 'Login credentials Invalid!'
-                        
-                }else if(userEmail.value === element.email && userPassword.value === element.password) {
+                if(userEmail.value === element.email && userPassword.value === element.password) {
                 loadScreen.classList.remove('hidden');
                        setTimeout(() => {
                         window.open(
@@ -46,21 +46,19 @@ onEvent('click', loginBtn, function(event){
 const loginInfo = JSON.parse(localStorage.getItem('loginInfo')) || [];
 
 onEvent('click', createBtn, function(event){
+        event.preventDefault();
       
         const login = {
                 email: userEmail.value,
                 password: userPassword.value
         }
 
-       
-        event.preventDefault();
-
-        if(!emailRegex.test(userEmail.value)) {
-                errorOutput.innerText = 'Credentials invalid!';
-        } else if (!emailRegex.test(userEmail.value)) {
-                errorOutput.innerText = 'Email a valid email!';
+        if(userEmail.value == '' && userPassword.value == '') {
+                errorOutput.innerText = 'Credentials empty!'
         }
-        else if (userPassword.value == '') {
+        else if(!emailRegex.test(userEmail.value)) {
+                errorOutput.innerText = 'Email Invalid!';
+        } else if (userPassword.value == '') {
                 errorOutput.innerText = 'Enter a valid password!';
         } else {
                 loginInfo.push(login);
@@ -68,6 +66,19 @@ onEvent('click', createBtn, function(event){
                 errorOutput.innerText = 'Profile created!';
         }
 });
+
+function showLogin() {
+        if(loginInfo.length >= 1){
+                loginInfo.forEach(element => {
+                        console.log(`Email: ${element.email}`, '\n');
+                        console.log(`Password: ${element.password}`);
+                });
+        }else {
+                console.log(`Create a profile!`)
+        }
+}
+
+showLogin();
 
 const showPw = select('.fa-eye')
 

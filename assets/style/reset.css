@@ -60,11 +60,11 @@ input[type=button], input[type=submit] {
           user-select: none;
 }
 
-input, textarea, button {
+/* input, textarea, button {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
-}
+} */
 
 input[type=button], input[type=submit], input[type=clear], button, a {
   cursor: pointer;

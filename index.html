@@ -36,14 +36,22 @@
                         <form action="">
                             <div class="enter-email border">
                                 <i class="fa-regular fa-envelope"></i>
-                                <input type="email" class="user-email" name="" id="" placeholder="Email (JohnDoe123@email.com)"></input>
+                                <input type="email" class="user-email" name="" id="" placeholder="Email"></input>
                             </div>
                             <div class="enter-pw border">
                                 <i class="fa-solid fa-key"></i>
                                 <input type="password" class="user-password" name="" id="" placeholder="Password">
                                 <i class="fa-regular fa-eye"></i>
                             </div>
-                            <h2 class="frgt-pw">Forgot Password?</h2>
+                            <div class="option-wrap">
+                                <div class="input-wrap">
+                                    <input type="checkbox" name="rmbr" class="rmbr-check">
+                                    <label for="rmbr">Remember me?</label>
+                                </div>
+                                <div class="frgt-pw">
+                                    <h2>Forgot Password?</h2>
+                                </div>
+                            </div>  
                             <div class="btn-wrapper">
                                 <button class="user-login">
                                     Login
@@ -53,10 +61,9 @@
                                 </button>
                             </div>
                             <p class="hint">Hint: Create a profile and login to be redirected!</p>
-                            <p class="error"></p>
                             <div class="login-options">
-                                <p>Or login with</p>
                                 <ul>
+                                    <p>Or login with </p>
                                     <li>Google</li>
                                     <li>Linkedin</li>
                                     <li>Facebook</li>
@@ -64,6 +71,7 @@
                             </div>
                         </form>
                     </div>
+                    <p class="error"></p>
                 </section>
                 <div class="img-wrapper">
                     <h1>ConnectMe <i class="fa-regular fa-chess-rook"></i></h1>
@@ -74,4 +82,16 @@
 
        </main>
     </body>
+    <script>
+        let vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+  
+   
+  
+        window.addEventListener('resize', () => {
+          vh = window.innerHeight * 0.01;
+          document.documentElement.style.setProperty('--vh', `${vh}px`);
+        });
+   </script>
+   
 </html>
