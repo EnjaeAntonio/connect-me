@@ -55,8 +55,7 @@ onEvent('click', createBtn, function(event){
 
         if(userEmail.value == '' && userPassword.value == '') {
                 errorOutput.innerText = 'Credentials empty!'
-        }
-        else if(!emailRegex.test(userEmail.value)) {
+        }else if(!emailRegex.test(userEmail.value)) {
                 errorOutput.innerText = 'Email Invalid!';
         } else if (userPassword.value == '') {
                 errorOutput.innerText = 'Enter a valid password!';
@@ -80,8 +79,8 @@ function showLogin() {
 
 showLogin();
 
-const showPw = select('.fa-eye')
 
+const showPw = select('.fa-eye')
 onEvent('click', showPw, function(){
           var x = userPassword;
         if (x.type === "password") {
