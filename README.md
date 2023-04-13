@@ -1,8 +1,14 @@
-# ConnectMe Social Platform
+# <h1 align="center">ConnectMe :iphone: </h1>
 
-ConnectMe is a mock **social networking platform** designed to bring people together, help them share their thoughts, and discover new connections. 
+### Table of contents
+- [Demo](https://enjaeantonio.github.io/connect-me)
+- [Login Page](#Login-page)
+- [Home Page](#Home-page)
 
-Click <a href='https://enjaeantonio.github.io/connect-me/' >Here</a> to try out ConnectMe! 
+
+## Introduction
+ConnectMe is a mock **Social Networking Platform** designed to bring people together, help them share their thoughts, and discover new connections. 
+
 
 ### Technologies 
 
