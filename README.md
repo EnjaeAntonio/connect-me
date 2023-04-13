@@ -15,13 +15,15 @@ ConnectMe is a mock **Social Networking Platform** designed to bring people toge
 ## Login Page 
 
 
-This section contains a form for users to enter their email and password to login, or create a profile if they do not have one. The section also includes some styling elements like a gradient line and icons for email, password, and an eye for password visibility. Finally, there is an empty element for displaying any error messages.
+- This section contains a form for users to enter their email and password to login, or create a profile if they do not have one. 
+- It also includes some styling elements like a gradient line and icons for email, password, and an eye for password visibility. 
 
 ![Login page](assets/img/Screenshot%202023-04-12%20214435.png)
 
-### Code 
-Users can **create** a profile by saving their email and password to local storage. Error messages are displayed for invalid input, and success messages are displayed for successful login or profile creation.
-It also **retrieves** the user's email and password input, validates the input, and checks if the credentials match those saved in local storage. 
+### LocalStorage 
+- Users can **create** a profile by saving their email and password to local storage. 
+- Error messages are displayed for invalid input, and success messages are displayed for successful login or profile creation.
+- It also **retrieves** the user's email and password input, validates the input, and checks if the credentials match those saved in local storage. 
 
 ```JavaScript 
 onEvent('click', loginBtn, function(event){
@@ -75,14 +77,17 @@ onEvent('click', createBtn, function(event){
 
 
 ##  Home Page
-This code controls the behavior of a **social media website**. It allows users to create posts containing text or image content and displays the post on the webpage. 
+- This code controls the behavior of a **social media website**. It allows users to create posts containing text or image content and displays the post on the webpage. 
 
 
-![Home page](assets/img/Screenshot%202023-04-12%20212804.png)
+![Home page](assets/img/HomePage.png)
 
 
-### Code 
-Retrieves random user data from the **https://randomuser.me** API and displays it on a webpage. The **getUser()** function sends a GET request to the API, with parameters to request data from Canada and to retrieve 10 results. The response data is then converted to a **JSON** object, which is passed to the randomUser() function. The randomUser() function extracts the necessary data from the **response object**, creates a new div element with the extracted data, and appends it to the HTML DOM. The appended div element includes a user's picture, name, and location. 
+### RandomUser API 
+- Retrieves random user data from the **https://randomuser.me** API and displays it on a webpage. 
+- The **getUser()** function sends a GET request to the API, with parameters to request data from Canada and to retrieve 10 results. 
+- The response data is then converted to a **JSON** object, which is passed to the randomUser() function. 
+- The randomUser() function extracts the necessary data from the **response object**, creates a new div element with the extracted data, and appends it to the HTML DOM. The appended div element includes a user's picture, name, and location. 
 ``` JavaScript
     function getUser(){
 

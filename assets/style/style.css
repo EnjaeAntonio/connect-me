@@ -81,7 +81,7 @@ span {
 }
 
 .login-wrapper h1 {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
 }
 
 .login-wrapper > * {
@@ -95,6 +95,10 @@ span {
 
 form {
     display: grid;
+}
+
+.enter-pw{
+    margin-top: 10px;
 }
 
 .border {
@@ -140,6 +144,11 @@ input[type="password"] {
 
 .fa-eye {
     cursor: pointer;
+    color: var(--app-main-blue);
+}
+
+.fa-eye.active {
+    color: var(--app-red);
 }
 i {
     color: #a4a4a4;
@@ -161,17 +170,25 @@ button {
     background: var(--app-main-blue);
     background: linear-gradient(90deg, rgba(102,162,255,1) 0%, rgba(37,122,255,1) 100%);
     color: #fff;
+    transition: transform 0.2s ease-in-out;
 }
 
 .user-login:hover {
-    background: rgb(64, 124, 213);
+    transform: scale(1.05);
+
 }
 
 .user-create {
     background-color: #fff;
     color: var(--app-main-blue);
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    transition: transform 0.2s ease-in-out;
 }
+
+.user-create:hover {
+    transform: scale(1.05);
+}
+
 
 .option-wrap {
     display: flex;

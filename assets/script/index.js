@@ -77,16 +77,13 @@ function showLogin() {
 
 showLogin();
 
+const userInputPassword = select('#userPassword');
+const showPassword = select('#showPassword');
 
-const showPw = select('.fa-eye')
-onEvent('click', showPw, function(){
-          var x = userPassword;
-        if (x.type === "password") {
-          x.type = "text";
-        } else {
-          x.type = "password";
-        }
+onEvent('click', showPassword, function() {
+  showPassword.classList.toggle('active');
+  userInputPassword.type = userInputPassword.type === "password" ? "text" : "password";
 });
-        
+
 
 

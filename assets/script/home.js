@@ -26,11 +26,6 @@ const user = new User(34369, 'Enjae Antonio', 'EnjaeAC', 'enjaeantonio@gmail.com
 function userPost(){
 
         // Variables for function
-        let todaysDate = new Date();
-        let currentTime = new Date();
-        let currentHours = currentTime.getHours().toString();
-        let currentMinutes = currentTime.getMinutes().toString().padStart('2', 0)
-        let ampm = currentHours >= 12 ? 'pm' : 'am';
         let img = select('.avatar').innerHTML;
         const selectedFile = document.getElementById('file-upload');
    
@@ -50,14 +45,17 @@ function userPost(){
 
                 newDiv.innerHTML = `
                         <div class="content-header">
-                                ${img}
-                                <h1>${user.name}</h1>
-                                <p>${todaysDate.toDateString()}</p>
+                                <div class="content-left">
+                                        ${img}
+                                        <h1>${user.name}</h1>
+                                </div>
+                                <i class="fa-solid fa-sliders"></i>
                         </div>
                         <p class="user-output">${postText.value}</p>
                         <img class="user-img" src="${url}"/>
-                        <h4 class="clock">${currentHours}:${currentMinutes} ${ampm}</h4>
-                        `;
+                        <div class="comment-wrapper">
+                        <h4 class="time">${getCurrentDateTime()}</h4>
+                        </div>                            `;
 
                 // Prepending and also resetting values
                 parentPostContent.prepend(newDiv);
@@ -74,13 +72,16 @@ function userPost(){
 
                 newDiv.innerHTML = `
                         <div class="content-header">
-                                ${img}
-                                <h1>${user.name}</h1>
-                                <p>${todaysDate.toDateString()}</p>
+                                <div class="content-left">
+                                        ${img}
+                                        <h1>${user.name}</h1>
+                                </div>
+                                <i class="fa-solid fa-sliders"></i>
                         </div>
                         <p class="user-output">${postText.value}</p>
-                        <h4 class"clock">${currentHours}:${currentMinutes} ${ampm}</h4>
-                        `;
+                        <div class="comment-wrapper">
+                        <h4 class="time">${getCurrentDateTime()}</h4>
+                        </div>                        `;
 
                 parentPostContent.prepend(newDiv);
                 postText.value = '';
@@ -138,7 +139,7 @@ const genParent = select('.gen-profile');
 
 function getUser(){
 
-const url = `https://randomuser.me/api/?nat=CA&results=10&`;
+const url = `https://randomuser.me/api/?nat=CA&results=5&`;
 const options = {
         method: 'GET',
         mode: 'cors'
@@ -154,6 +155,14 @@ const options = {
 
 getUser();
 
+
+function getCurrentDateTime() {
+        const currentDateTime = new Date();
+        const date = currentDateTime.toLocaleDateString();
+        const time = currentDateTime.toLocaleTimeString();
+        return `${date} ${time}`;
+}
+
 function randomUser(randomUser){
 
 const users = randomUser.results;
@@ -167,8 +176,8 @@ const users = randomUser.results;
                    <div class="gen-desc">
                        <h2>${element.name.first} ${element.name.last}</h2>
                        <p>${element.location.city}, ${element.location.state}</p>
-                       <button class="gen-follow">Follow</button>
 
+                       <button class="gen-follow">Follow</button>
                    </div>
                `
                genParent.append(genUserDiv)
