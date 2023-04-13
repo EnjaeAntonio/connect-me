@@ -14,7 +14,7 @@ Click <a href='https://enjaeantonio.github.io/connect-me/' >Here</a> to try out 
 
 This section contains a form for users to enter their email and password to login, or create a profile if they do not have one. The section also includes some styling elements like a gradient line and icons for email, password, and an eye for password visibility. Finally, there is an empty element for displaying any error messages.
 
-![Login page](assets/img/Screenshot%202023-04-12%20212502.png)
+![Login page](assets/img/Screenshot%202023-04-12%20214435.png)
 
 ### Code for Login Page
 Users can **create** a profile by saving their email and password to local storage. Error messages are displayed for invalid input, and success messages are displayed for successful login or profile creation.
