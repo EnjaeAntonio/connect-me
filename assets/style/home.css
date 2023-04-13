@@ -221,10 +221,6 @@ header nav ul li + li {
   transform: rotate(360deg);
 }
 
-
-.header-container {
-}
-
 .profile-card-username {
   font-size: 22px;
   color: #333;
@@ -875,12 +871,11 @@ footer {
     }
   
     /* Profile Cards */
-    .my-profile, .post-wrapper {
+    .my-profile, .gen-profile, .post-wrapper {
       width: 100%;
     }
   
     .gen-profile {
-      width: 100%;
       margin: 0;
       margin-bottom: 50px;
     }
