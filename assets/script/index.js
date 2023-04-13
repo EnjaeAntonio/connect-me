@@ -9,10 +9,8 @@ import {onEvent, select} from './utils.js';
         Variables
 *****************************************/
 const errorOutput = select('.error')
-
 const userEmail = select('.user-email');
 const userPassword = select('.user-password');
-
 const loadScreen = select('.load-screen');
 const loginBtn = select('.user-login')
 const createBtn = select('.user-create');
@@ -73,7 +71,7 @@ function showLogin() {
                         console.log(`Password: ${element.password}`);
                 });
         }else {
-                console.log(`Create a profile!`)
+        console.log(`Create a profile!`)
         }
 }
 
