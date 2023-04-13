@@ -270,7 +270,7 @@ li:hover {
 
 @media (max-width: 456px) {
     .login {
-        height: 80vh;
+        height: 60vh;
         width: 100%;
     }
     .img-wrapper img {
@@ -284,6 +284,24 @@ li:hover {
     .login-wrapper > * {
         margin-bottom: 20px;
     }
-    
 
+    .login-wrapper .info {
+        font-size: 1.6rem;
+    }
+
+    form .border {
+        padding: 0 20px;
+    }
+    
+    form > * {
+        margin-bottom: 10px;
+    }
+
+    .frgt-pw h2 {
+        font-size: .8rem;
+    }
+
+    label {
+        font-size: .8rem;
+    }
 }
