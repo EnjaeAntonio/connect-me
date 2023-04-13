@@ -13,20 +13,14 @@ const postBtn = select('.post-btn');
 const parentPostContent = select('.post');
 const errorOutput = select('.error-output');
 
-/*****************************************
-        Creating new User
-*****************************************/
-
-const user = new User(34369, 'Enjae Antonio', 'EnjaeAC', 'enjaeantonio@gmail.com');
 
 /*****************************************
         Post Content
 *****************************************/
 
-function userPost(){
-
+onEvent('click', postBtn, function(){
         // Variables for function
-        let img = select('.avatar').innerHTML;
+        let img = select('.content-left img').src;
         const selectedFile = document.getElementById('file-upload');
    
         // Validating empty fields
@@ -46,8 +40,8 @@ function userPost(){
                 newDiv.innerHTML = `
                         <div class="content-header">
                                 <div class="content-left">
-                                        ${img}
-                                        <h1>${user.name}</h1>
+                                <img src="${img}" class="avatar-pic" alt="">
+                                <h1>${user.name}</h1>
                                 </div>
                                 <i class="fa-solid fa-sliders"></i>
                         </div>
@@ -73,7 +67,7 @@ function userPost(){
                 newDiv.innerHTML = `
                         <div class="content-header">
                                 <div class="content-left">
-                                        ${img}
+                                <img src="${img}" class="avatar-pic" alt="">
                                         <h1>${user.name}</h1>
                                 </div>
                                 <i class="fa-solid fa-sliders"></i>
@@ -87,7 +81,7 @@ function userPost(){
                 postText.value = '';
 
         }
-}       
+});
 
 
 
@@ -109,25 +103,61 @@ function showFileName( event ) {
 }
 
 /*****************************************
-        Display Profile
+        Creating new User
 *****************************************/
-let userInfoBtn = select('.info-btn')
-onEvent('click', userInfoBtn, function() {
 
-        let x = select('.user-sub-info');
-        if (x.style.display === "block") {
-          x.style.display = "none";
-        } else 
-          x.style.display = "block";
-          
-      });
-
+const user = new User(34369, 'Enjae Antonio', 'EnjaeAC', 'enjaeantonio@gmail.com');
 
 /*****************************************
-        OnEvent handler
+        Creating profile card
 *****************************************/
-onEvent('click', postBtn, function(){
-        userPost();
+
+const profileCard = document.createElement('div');
+profileCard.classList.add('user-profile-card');
+profileCard.classList.add('profile-dropdown');
+
+profileCard.innerHTML = `
+    <div class="profile-card">
+        <div class="profile-card-header">
+            <h2>${user.name}</h2>
+            <div class="dropdown">
+                <button class="dropbtn"><i class="fa-solid fa-gear"></i></button>
+                <div class="dropdown-content">
+                <li><a href="#">Jobs</a></li>
+                <li><a href="#">Discover</a></li>
+                <li><a href="#">Friends</a></li>
+                <li><a href="#">My Profile</a></li>
+                <li><a href="#">Settings</a></li>
+                <li><a href="#">Logout</a></li>
+                </div>
+            </div>
+        </div>
+        <div class="profile-card-content">
+        <p>@${user.userName}</p>
+        <p class="profile-card-id">ID: ${user.id}</p>
+            <p class="profile-card-email">${user.email}</p>
+        </div>
+    </div>
+`;
+
+const profileContainer = document.querySelector('.profile-container');
+profileContainer.appendChild(profileCard);
+
+const userSubInfo = document.querySelector('.fa-user');
+userSubInfo.addEventListener('click', function(e) {
+    if (profileCard.style.display === 'block') {
+        profileCard.style.display = 'none';
+    } else {
+        profileCard.style.display = 'block';
+    }
+    e.stopPropagation();
+});
+
+// Add click event listener to the document object
+document.addEventListener('click', function(e) {
+    if (profileCard.style.display === 'block' && !profileCard.contains(e.target) && !userSubInfo.contains(e.target)) {
+        profileCard.style.display = 'none';
+    }
 });
 
 /*****************************************
@@ -137,52 +167,48 @@ onEvent('click', postBtn, function(){
 const genParent = select('.gen-profile');
 
 
-function getUser(){
-
-const url = `https://randomuser.me/api/?nat=CA&results=5&`;
-const options = {
-        method: 'GET',
-        mode: 'cors'
-     };
+function getUser() {
+        const url = `https://randomuser.me/api/?nat=CA&results=5&`;
+        const options = {
+          method: 'GET',
+          mode: 'cors'
+        };
+      
         fetch(url, options)
-          .then((result) => {
-                return result.json();
-        })
-          .then((data) => {
-                randomUser(data);
-        });
-      };
-
+          .then(result => result.json())
+          .then(data => randomUser(data));
+      }
+      
 getUser();
-
-
+      
 function getCurrentDateTime() {
         const currentDateTime = new Date();
         const date = currentDateTime.toLocaleDateString();
-        const time = currentDateTime.toLocaleTimeString();
-        return `${date} ${time}`;
-}
+        const now = new Date();
+        const hours = now.getHours();
+        const minutes = now.getMinutes();
+        const ampm = hours >= 12 ? 'PM' : 'AM';
+        const formattedHours = hours % 12 || 12;
+        const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
+        return `${date} ${formattedHours}:${formattedMinutes} ${ampm}`;
+      }
+      
 
-function randomUser(randomUser){
-
-const users = randomUser.results;
-
+function randomUser(randomUser) {
+        const users = randomUser.results;
         users.forEach(element => {
-                let genUserDiv = create('div');
-                genUserDiv.className = 'gen-users';
-
-               genUserDiv.innerHTML = `
-               <img src="${element.picture.thumbnail}" class="gen-pic" alt="">
-                   <div class="gen-desc">
-                       <h2>${element.name.first} ${element.name.last}</h2>
-                       <p>${element.location.city}, ${element.location.state}</p>
-
-                       <button class="gen-follow">Follow</button>
-                   </div>
-               `
-               genParent.append(genUserDiv)
-               
+          const genUserDiv = create('div');
+          genUserDiv.classList.add('gen-users');
+          genUserDiv.innerHTML = `
+            <img src="${element.picture.thumbnail}" class="gen-pic" alt="">
+            <div class="gen-desc">
+              <h2>${element.name.first} ${element.name.last}</h2>
+              <p>${element.location.city}, ${element.location.state}</p>
+              <button class="gen-follow">Follow</button>
+            </div>
+          `;
+          genParent.append(genUserDiv);
         });
-      };
-
+      }
+      
       

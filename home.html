@@ -18,41 +18,34 @@
     <body>
        <main>
         <header>
-            <div class="container flexbox">
-                <div class="title">
-                    <h1>ConnectMe <i class="fa-regular fa-chess-rook"></i></h1>
+            <div class="header-container">
+                <div class="header-wrapper container flexbox">
+                    <div class="title">
+                        <h1>ConnectMe <i class="fa-regular fa-chess-rook"></i></h1>
+                    </div>
+                    <nav class="header-nav">
+                        <ul>
+                            <li><a href="">Jobs</a></li>
+                            <li><a href="">Discover</a></li>
+                            <li><a href="">Friends</a></li>
+                            <li><a href="">My Profile</a></li>
+                            <li><a href="">Settings</a></li>
+                        </ul>
+                    </nav>
+                    <picture class="avatar flexbox">
+                        <i class="fa-solid fa-user"></i>
+                        <div class="profile-container"></div>
+                      </picture>
+
+                    <!-- Nav Bar drop down here-->
                 </div>
-                <nav class="header-nav">
-                    <ul>
-                        <li><a href="">Jobs</a></li>
-                        <li><a href="">Discover</a></li>
-                        <li><a href="">Friends</a></li>
-                        <li><a href="">My Profile</a></li>
-                        <li><a href="">Settings</a></li>
-                    </ul>
-                </nav>
-                <picture class="avatar">
-                    <img class="info-btn avatar-pic" src="./assets/img/MITT_Henlow_009.jpg" alt="">
-                </picture>
+            </div>
         </header>
-        
-        <section class="user-sub-info">
-            <nav class="resp-nav">
-                <ul>
-                    <li><a href="">Jobs</a></li>
-                    <li><a href="">Discover</a></li>
-                    <li><a href="">Friends</a></li>
-                    <li><a href="">My Profile</a></li>
-                    <li><a href="">Settings</a></li>
-                </ul>
-            </nav>
-            <p class="sub-info"></p>
-            <p class="user-info"></p>
-        </section>
+        <div class="header-placeholder"></div>
+           
         <section class="main-wrapper container">
         <div class="row flexbox">
-
-            <section class="my-profile">
+            <section class="my-profile card">
                 <div class="profile-header">
                   <img src="./assets/img/MITT_Henlow_009.jpg" class="profile-pic" alt="">
                   <h1 class="name">Enjae Antonio</h1>
@@ -72,29 +65,24 @@
                   <li><a href="https://github.com/EnjaeAntonio"><i class="fa-brands fa-github"></i>GitHub</a></li>
                   <li><a href="https://twitter.com/EnjaeA"><i class="fa-brands fa-twitter"></i>Twitter</a></li>
                 </ul>
-                <p>Subscribe now to get exclusive tools</p>
+                <p>Connect with us now to access exclusive tools</p>
                 <button class="premium-btn">
                   Premium
                 </button>
               </section>
-              
-        <section class="post-wrapper container"> 
+        <section class="post-wrapper container card"> 
             <form action="">
-                    <div class="form-wrapper container">
-                        
+                    <div class="form-wrapper flexbox container">
                         <textarea class="content-input" name="post" id="post" cols="40" rows="2" placeholder="What's new, Enjae?"></textarea>
-                            
                         <div class="btn-wrapper">
                         <input type="file" id="file-upload" multiple required />
-    
                         <div class="file-filename">
                             <input type="file" id="file-upload">
-                            <label for="file-upload" ><i class="fa-solid fa-image"></i></label>
+                            <label class="flexbox" for="file-upload" ><i class="fa-solid fa-image"></i></label>
                             <p id="file-upload-filename"></p>
                         </div>
                             <button type="button" class="post-btn">Post</button>
                         </div> 
-                        
                     </div>
                     <p class="error-output"></p>
                     <section class="post container">
@@ -108,7 +96,7 @@
                             </div>
                         <p class="user-output">Wow its already April!.</p>
                         <div class="comment-wrapper">
-                            <h4 class="time">4/13/2023 4:59:42 AM</h4>
+                            <h4 class="time">4/13/2023 4:59am</h4>
                         </div>
                         </div>
                         <div class="content">
@@ -121,7 +109,7 @@
                             </div>
                         <p class="user-output">Christmas is next week! Time goes by so fast.</p>
                         <div class="comment-wrapper">
-                            <h4 class="time">3:35am</h4>
+                            <h4 class="time">12/18/2022 3:35am</h4>
                         </div>
                         </div>
                         <div class="content">
@@ -136,12 +124,12 @@
                             Also with our family dogs!
                         </p>
                         <img src="./assets/img/photo_2022-09-14_09-50-48.jpg" alt="">
-                        <h4 class="time">3:35am</h4>
+                        <h4 class="time">18/10/2022 6:35pm</h4>
                         </div>
                     </section>
                 </form>
             </section>
-        <div class="gen-profile">
+        <div class="gen-profile card">
             <div class="gen-title">
                 <h1>People you may know</h1>
                 <div class="gradient-line"></div>
@@ -192,18 +180,14 @@
                     </ul>
                 </nav>
             </div>
-   
             <div class="copyright flexbox">
                 <p class="copyright-width">&copy; 2023 ConnectMe. All rights reserved.</p>
                 <span class="policy flexbox">
                     <p>Privacy Policy</p>
                     <p>Terms and Conditions</p>
                 </span>
-              
             </div>
         </div>
     </footer>
-    
-    
     </body>
 </html>

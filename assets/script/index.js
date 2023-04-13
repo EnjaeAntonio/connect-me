@@ -18,27 +18,32 @@ const createBtn = select('.user-create');
 const emailRegex = /^(?=^.{8,}$)[-_A-Za-z0-9]+([_.-][a-zA-Z0-9]+)*@[A-Za-z0-9]+([.-][a-zA-Z0-9]+)*\.[A-Za-z]{2,}$/;
 
 onEvent('click', loginBtn, function(event){
-        if((userEmail.value === '' && userPassword.value === '')){
-        errorOutput.innerText = 'Login credentials Invalid!'
-        }
         event.preventDefault();
+        
+        if (userEmail.value === '' && userPassword.value === '') {
+          errorOutput.innerText = 'Login credentials Invalid!';
+          return;
+        }
+        
+        let validCredentials = false;
         loginInfo.forEach(element => {
-                if(userEmail.value === element.email && userPassword.value === element.password) {
-                loadScreen.classList.remove('hidden');
-                       setTimeout(() => {
-                        window.open(
-                                './home.html',
-                                '_blank'
-                              );
-                              loadScreen.classList.add('hidden');
-
-                       }, 2000) 
-                        errorOutput.innerText = 'Success!';
-                }else {
-                        errorOutput.innerText = 'Email or password is invalid!';
-                }
+          if (userEmail.value === element.email && userPassword.value === element.password) {
+            validCredentials = true;
+          }
         });
-});
+      
+        if (validCredentials) {
+          loadScreen.classList.remove('hidden');
+          setTimeout(() => {
+            window.open('./home.html', '_blank');
+            loadScreen.classList.add('hidden');
+          }, 2000);
+          errorOutput.innerText = 'Success!';
+        } else {
+          errorOutput.innerText = 'Email or password is invalid!';
+        }
+      });
+      
 
 
 const loginInfo = JSON.parse(localStorage.getItem('loginInfo')) || [];

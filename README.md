@@ -2,8 +2,9 @@
 
 ### Table of contents
 - [Demo](https://enjaeantonio.github.io/connect-me)
-- [Login Page](#Login-page)
+- [Login Page](#localstorage)
 - [Home Page](#Home-page)
+- [Random User Api](#randomuser-api)
 
 
 ## Introduction :wave:
@@ -27,27 +28,31 @@ ConnectMe is a mock **Social Networking Platform** designed to bring people toge
 
 ```JavaScript 
 onEvent('click', loginBtn, function(event){
-        if((userEmail.value === '' && userPassword.value === '')){
-        errorOutput.innerText = 'Login credentials Invalid!'
-        }
         event.preventDefault();
+        
+        if (userEmail.value === '' && userPassword.value === '') {
+          errorOutput.innerText = 'Login credentials Invalid!';
+          return;
+        }
+        
+        let validCredentials = false;
         loginInfo.forEach(element => {
-                if(userEmail.value === element.email && userPassword.value === element.password) {
-                loadScreen.classList.remove('hidden');
-                       setTimeout(() => {
-                        window.open(
-                                './home.html',
-                                '_blank'
-                              );
-                              loadScreen.classList.add('hidden');
-
-                       }, 2000) 
-                        errorOutput.innerText = 'Success!';
-                }else {
-                        errorOutput.innerText = 'Email or password is invalid!';
-                }
+          if (userEmail.value === element.email && userPassword.value === element.password) {
+            validCredentials = true;
+          }
         });
-});
+      
+        if (validCredentials) {
+          loadScreen.classList.remove('hidden');
+          setTimeout(() => {
+            window.open('./home.html', '_blank');
+            loadScreen.classList.add('hidden');
+          }, 2000);
+          errorOutput.innerText = 'Success!';
+        } else {
+          errorOutput.innerText = 'Email or password is invalid!';
+        }
+      });
 
 
 const loginInfo = JSON.parse(localStorage.getItem('loginInfo')) || [];
@@ -89,44 +94,34 @@ onEvent('click', createBtn, function(event){
 - The response data is then converted to a **JSON** object, which is passed to the randomUser() function. 
 - The randomUser() function extracts the necessary data from the **response object**, creates a new div element with the extracted data, and appends it to the HTML DOM. The appended div element includes a user's picture, name, and location. 
 ``` JavaScript
-    function getUser(){
-
-const url = `https://randomuser.me/api/?nat=CA&results=10&`;
-const options = {
-        method: 'GET',
-        mode: 'cors'
-     };
+function getUser() {
+        const url = `https://randomuser.me/api/?nat=CA&results=5&`;
+        const options = {
+          method: 'GET',
+          mode: 'cors'
+        };
+      
         fetch(url, options)
-          .then((result) => {
-                return result.json();
-        })
-          .then((data) => {
-                randomUser(data);
-        });
-      };
-
+          .then(result => result.json())
+          .then(data => randomUser(data));
+      }
+      
 getUser();
 
-function randomUser(randomUser){
-
-const users = randomUser.results;
-
+function randomUser(randomUser) {
+        const users = randomUser.results;
         users.forEach(element => {
-                let genUserDiv = create('div');
-                genUserDiv.className = 'gen-users';
-
-               genUserDiv.innerHTML = `
-               <img src="${element.picture.thumbnail}" class="gen-pic" alt="">
-                   <div class="gen-desc">
-                       <h2>${element.name.first} ${element.name.last}</h2>
-                       <p>${element.location.city}, ${element.location.state}</p>
-                       <button class="gen-follow">Follow</button>
-
-                   </div>
-               `
-               genParent.append(genUserDiv)
-               
+          const genUserDiv = create('div');
+          genUserDiv.classList.add('gen-users');
+          genUserDiv.innerHTML = `
+            <img src="${element.picture.thumbnail}" class="gen-pic" alt="">
+            <div class="gen-desc">
+              <h2>${element.name.first} ${element.name.last}</h2>
+              <p>${element.location.city}, ${element.location.state}</p>
+              <button class="gen-follow">Follow</button>
+            </div>
+          `;
+          genParent.append(genUserDiv);
         });
-      };
-
+}
 ```
