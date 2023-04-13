@@ -85,6 +85,7 @@ onEvent('click', postBtn, function(){
 
 
 
+
 /*****************************************
         Show file name
 *****************************************/
@@ -128,17 +129,21 @@ profileCard.innerHTML = `
                 <li><a href="#">Friends</a></li>
                 <li><a href="#">My Profile</a></li>
                 <li><a href="#">Settings</a></li>
-                <li><a href="#">Logout</a></li>
+                <li><a href="#" class="logout-hover">Logout</a></li>
                 </div>
             </div>
         </div>
         <div class="profile-card-content">
-        <p>@${user.userName}</p>
+        <p class="profile-card-username">@${user.userName}</p>
         <p class="profile-card-id">ID: ${user.id}</p>
-            <p class="profile-card-email">${user.email}</p>
+        <p class="profile-card-email">${user.email}</p>
         </div>
+        <button class="premium-btn">
+        Subscribe
+        </button>
     </div>
 `;
+
 
 const profileContainer = document.querySelector('.profile-container');
 profileContainer.appendChild(profileCard);

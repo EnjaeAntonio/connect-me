@@ -70,7 +70,39 @@ body {
     display: none;
   }
   
-  
+/* Add this CSS to your page's stylesheet */
+
+/* Set the initial position of the sections off-screen */
+.my-profile, .post-wrapper, .gen-profile {
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+/* Create the animation */
+@keyframes floatIn {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Apply the animation to each section */
+.my-profile {
+  animation: floatIn 0.5s ease-in-out 0.25s forwards;
+}
+
+.post-wrapper {
+  animation: floatIn 0.5s ease-in-out 0.5s forwards;
+}
+
+.gen-profile {
+  animation: floatIn 0.5s ease-in-out 0.75s forwards;
+}
+
 /* ---------------------------------------------------- */
 /* Header                                           
 /* ---------------------------------------------------- */
@@ -83,6 +115,30 @@ header {
     right: 0;
     z-index: 100;
 }
+
+.fa-chess-rook:hover {
+  cursor: pointer;
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-10deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(10deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
 
 .title {
     width: 25%;
@@ -120,19 +176,24 @@ picture{
 }
 
 .header-nav ul li a {
-    font-size: var(--app-header-font);
-    letter-spacing: 1px;
-    background: var(--app-main-blue);
-    background: var(--app-linear-gradient-bg);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-weight: 600;
-    text-decoration: none;
-    cursor: pointer;
+  font-size: var(--app-header-font);
+  letter-spacing: 1px;
+  background: var(--app-main-blue);
+  background: var(--app-linear-gradient-bg);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
 }
 
-nav ul li a:hover {
-    text-decoration: underline #add8e6;
+.header-nav ul li a:hover {
+  padding: 2px 4px;
+  border-radius: 4px;
+  text-decoration: none;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 header nav ul li + li {
@@ -151,12 +212,38 @@ header nav ul li + li {
 /* Responsive Nav                                    
 /* ---------------------------------------------------- */
 
-.fa-user{
+
+.dropbtn i {
+  transition: all 0.5s ease;
 }
+
+.dropbtn:hover i {
+  transform: rotate(360deg);
+}
+
 
 .header-container {
 }
 
+.profile-card-username {
+  font-size: 22px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* Style the ID paragraph */
+.profile-card-id {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+/* Style the email paragraph */
+.profile-card-email {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 5px;
+}
 
 /* Navigation */
 .user-sub-info .resp-nav ul {
@@ -379,8 +466,9 @@ header nav ul li + li {
 }
 
 .fa-twitter {
-    color: #1DA1F2;
+  color: #1DA1F2;
 }
+
 
 .user-links li {
     list-style: none;
