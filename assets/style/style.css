@@ -1,307 +1,1063 @@
-@import "./reset.css";
+/* ==========================================
+   RESET
+========================================== */
 
-/* ---------------------------------------------------- */
-/*                                                      */
-/* ---------------------------------------------------- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
 :root {
-    --app-main-blue: #257aff;
+    --background: #0b0f14;
+    --surface: #121820;
+    --surface-hover: #18212b;
+
+    --white: #f5f7f8;
+    --muted: #8b96a3;
+
+    --accent: #f97316;
+    --accent-dark: #ea580c;
+    --accent-light: #fb923c;
+    --accent-soft: #fdba74;
+
+    --border: rgba(255, 255, 255, 0.09);
+
+    --error: #fb7185;
+    --success: #4ade80;
 }
 
-main {
-    background: url(../img/photo-1448630360428-65456885c650.avif) center center / cover no-repeat;
-    height: 100vh;
-    height: calc(var(--vh, 1vh) * 100);
-    display: grid;
-    place-items: center;
+
+/* ==========================================
+   BASE
+========================================== */
+
+html,
+body {
     width: 100%;
+    height: 100%;
+    overflow: hidden;
 }
 
-.hidden {
-    visibility: hidden;
+body {
+    font-family: "Inter", sans-serif;
+
+    background: var(--background);
+
+    color: var(--white);
+
+    line-height: 1.5;
 }
 
-.load-screen {
-    position: absolute;
-    z-index: 1;
-    height: 100vh;
-    height: calc(var(--vh, 1vh) * 100);
-    width: 100%;
-    background: rgb(20 24 28 / .8);
-    display: grid;
-    place-items: center;
-}
-
-.loader {
-    border: 8px solid #f3f3f3; /* Light grey */
-    border-top: 8px solid #3498db; /* Blue */
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    animation: spin 2s linear infinite;
-  }
-  
-@keyframes spin {
-    0% {transform: rotate(0deg);}
-    100%{transform: rotate(360deg);}
-}
-
-span {
-    background: var(--app-main-blue);
-    background: linear-gradient(90deg, rgba(102,162,255,1) 0%, rgba(37,122,255,1) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.overlay {
-    display: grid;
-    place-items: center;
-    height: 100vh;
-    background: rgb(20 24 28 / .55);
-    width: 100%;
-}
-
-.login-page {
-    display: flex;
-}
-
-.login {
-    height: 65vh;
-    width: 70vh;
-    right: 55vh;
-    background-color: #fff;
-    box-shadow: 0 0 10px var(--app-dark-bg);
-}
-
-.login-wrapper {
-    display: grid;
-    place-items: center;
-    justify-content: center;
-    padding: 20px;
-}
-
-.login-wrapper h1 {
-    font-size: 1.8rem;
-}
-
-.login-wrapper > * {
-    margin-bottom: 10px;
-}
-
-.info {
-    font-size: 1.4rem;
-    padding: 10px 0;
-}
-
-form {
-    display: grid;
-}
-
-.enter-pw{
-    margin-top: 10px;
-}
-
-.border {
-    border: 1px solid var(--app-light-bg);
-    padding: 0 10px;
-}
-
-.line-wrapper {
-    display: flex;
-    gap: 20px;
-}
-
-.gradient-line {
-    background: var(--app-main-blue);
-    background: linear-gradient(90deg, #5293f3 20%, rgba(37,122,255,1) 80%);
-    width: 80px;
-    height: 3px;
-}
-
-.line {
-    background-color: #a4a4a4;
-    width: 80px;
-    height: 3px;
-}
-
-input[type="text"] {
-    height: 40px;
-    width: 300px;
-    padding: 0 10px;
-}
-
-input[type="email"] {
-    height: 40px;
-    width: 300px;
-    padding: 0 10px;
-}
-
-input[type="password"] {
-    height: 40px;
-    width: 300px;
-    padding: 0 10px;
-}
-
-.fa-eye {
-    cursor: pointer;
-    color: var(--app-main-blue);
-}
-
-.fa-eye.active {
-    color: var(--app-red);
-}
-i {
-    color: #a4a4a4;
-}
-
-.btn-wrapper {
-    display: flex;
-    gap: 10px;
+button,
+input {
+    font: inherit;
 }
 
 button {
-    height: 36px;
-    width: 50%;
-    font-size: 15px;
-    border-radius: 5px;
-}
-
-.user-login {
-    background: var(--app-main-blue);
-    background: linear-gradient(90deg, rgba(102,162,255,1) 0%, rgba(37,122,255,1) 100%);
-    color: #fff;
-    transition: transform 0.2s ease-in-out;
-}
-
-.user-login:hover {
-    transform: scale(1.05);
-
-}
-
-.user-create {
-    background-color: #fff;
-    color: var(--app-main-blue);
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    transition: transform 0.2s ease-in-out;
-}
-
-.user-create:hover {
-    transform: scale(1.05);
-}
-
-
-.option-wrap {
-    display: flex;
-    margin-bottom: 10px;
-}
-
-.input-wrap {
-    width: 50%;
-}
-
-label {
-    font-size: 12px;
-}
-
-.frgt-pw {
-    width: 50%;
-    text-align: right;
+    border: 0;
     cursor: pointer;
 }
 
-.frgt-pw h2 {
-    font-size: 12px;
-    font-weight: 400;
-    color: #a4a4a4;
+a {
+    color: inherit;
+    text-decoration: none;
 }
 
-.hint, .error {
-    font-size: 12px;
-    text-align: center;
-    margin-top: 10px;
-}
 
-.error {
-    color: var(--app-red);
-}
+/* ==========================================
+   PAGE
+========================================== */
 
-.login-options {
-    font-size: 14px;
-    margin-top: 22px;
-}
-
-ul {
-    display: flex;
-    gap: 15px;
-    color: var(--app-main-blue);
-    cursor: pointer;
-}
-
-ul p {
-    color: #000;
-}
-
-li:hover {
-    text-decoration: underline var(--app-main-blue);
-}
-
-.img-wrapper {
-    display: grid;
-}
-
-.img-wrapper h1{
-    text-align: right;
-    position: absolute;
-    right: 40vh;
-    font-size: 1.6rem;
-    background: var(--app-main-blue);
-    background: linear-gradient(90deg, rgba(102,162,255,1) 0%, rgba(37,122,255,1) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.img-wrapper img {
-    display: block;
-    
-    height: 65vh;
+.page {
     width: 100%;
+    height: 100dvh;
+
+    display: grid;
+
+    grid-template-columns: 1.15fr 0.85fr;
 }
 
 
-@media (max-width: 456px) {
-    .login {
-        height: 60vh;
+/* ==========================================
+   BRAND PANEL
+========================================== */
+
+.brand-panel {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    background:
+        url("../img/photo-1448630360428-65456885c650.avif")
+        center center / cover
+        no-repeat;
+}
+
+.brand-panel::after {
+    content: "";
+
+    position: absolute;
+
+    width: 650px;
+    height: 650px;
+
+    left: -250px;
+    bottom: -320px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(249, 115, 22, 0.2);
+
+    filter: blur(110px);
+
+    pointer-events: none;
+}
+
+.brand-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(7, 10, 14, 0.94),
+            rgba(28, 16, 10, 0.74)
+        );
+}
+
+.brand-content {
+    position: relative;
+
+    z-index: 2;
+
+    width: 100%;
+    height: 100%;
+
+    padding: 48px 65px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-between;
+}
+
+
+/* ==========================================
+   LOGO
+========================================== */
+
+.logo,
+.mobile-logo {
+    font-size: 1.45rem;
+
+    font-weight: 800;
+
+    letter-spacing: -1px;
+}
+
+.logo span,
+.mobile-logo span {
+    color: var(--accent-light);
+}
+
+
+/* ==========================================
+   BRAND MESSAGE
+========================================== */
+
+.brand-message {
+    max-width: 760px;
+}
+
+.eyebrow {
+    margin-bottom: 22px;
+
+    color: #b9a798;
+
+    font-size: 0.68rem;
+
+    font-weight: 700;
+
+    letter-spacing: 2.5px;
+}
+
+.brand-message h1 {
+    font-size:
+        clamp(
+            3.7rem,
+            6.5vw,
+            7.2rem
+        );
+
+    line-height: 0.9;
+
+    letter-spacing: -6px;
+
+    font-weight: 700;
+}
+
+.brand-message h1 span {
+    color: transparent;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--accent-light),
+            var(--accent-soft)
+        );
+
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+
+.brand-description {
+    max-width: 520px;
+
+    margin-top: 26px;
+
+    color: #b5aaa2;
+
+    font-size: 0.95rem;
+
+    line-height: 1.75;
+}
+
+.copyright {
+    color: #7d736d;
+
+    font-size: 0.68rem;
+}
+
+
+/* ==========================================
+   LOGIN PANEL
+========================================== */
+
+.login-panel {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 35px 50px;
+
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(249, 115, 22, 0.05),
+            transparent 35%
+        ),
+        var(--background);
+
+    overflow: hidden;
+}
+
+.login-container {
+    width: min(100%, 430px);
+}
+
+.mobile-logo {
+    display: none;
+
+    margin-bottom: 50px;
+}
+
+
+/* ==========================================
+   LOGIN HEADING
+========================================== */
+
+.login-heading {
+    margin-bottom: 34px;
+}
+
+.small-heading {
+    margin-bottom: 11px;
+
+    color: var(--accent-light);
+
+    font-size: 0.65rem;
+
+    font-weight: 800;
+
+    letter-spacing: 2.2px;
+}
+
+.login-heading h2 {
+    margin-bottom: 10px;
+
+    font-size:
+        clamp(
+            2rem,
+            3vw,
+            2.65rem
+        );
+
+    line-height: 1.1;
+
+    letter-spacing: -2px;
+}
+
+.login-heading > p:last-child {
+    color: var(--muted);
+
+    font-size: 0.88rem;
+}
+
+
+/* ==========================================
+   FORM
+========================================== */
+
+.login-form {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+}
+
+.form-group label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #c5c9cf;
+
+    font-size: 0.76rem;
+
+    font-weight: 600;
+}
+
+
+/* ==========================================
+   INPUT WRAPPER
+========================================== */
+
+.input-wrapper {
+    position: relative;
+
+    height: 54px;
+
+    display: flex;
+
+    align-items: center;
+
+    border:
+        1px solid
+        var(--border);
+
+    background:
+        var(--surface);
+
+    transition:
+        border-color 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease,
+        transform 0.25s ease;
+}
+
+.input-wrapper:hover {
+    border-color:
+        rgba(255, 255, 255, 0.14);
+}
+
+.input-wrapper:focus-within {
+    border-color:
+        rgba(249, 115, 22, 0.85);
+
+    background:
+        var(--surface-hover);
+
+    box-shadow:
+        0 0 0 4px
+        rgba(249, 115, 22, 0.08);
+
+    transform:
+        translateY(-1px);
+}
+
+.input-wrapper > i {
+    width: 50px;
+
+    text-align: center;
+
+    color: #68717c;
+
+    font-size: 0.9rem;
+}
+
+.input-wrapper input {
+    flex: 1;
+
+    height: 100%;
+
+    min-width: 0;
+
+    border: 0;
+
+    outline: none;
+
+    background: transparent;
+
+    color: white;
+
+    font-size: 0.88rem;
+}
+
+.input-wrapper input::placeholder {
+    color: #5d6670;
+}
+
+
+/* ==========================================
+   PASSWORD
+========================================== */
+
+.password-label {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+.forgot-password {
+    margin-bottom: 8px;
+
+    padding: 0;
+
+    background: transparent;
+
+    color: #7d8692;
+
+    font-size: 0.7rem;
+
+    transition: color 0.2s ease;
+}
+
+.forgot-password:hover {
+    color: var(--accent-light);
+}
+
+.show-password {
+    width: 50px;
+    height: 100%;
+
+    flex-shrink: 0;
+
+    background: transparent;
+
+    color: #707985;
+
+    transition:
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.show-password:hover {
+    color: var(--accent-light);
+
+    transform: scale(1.05);
+}
+
+
+/* ==========================================
+   OPTIONS
+========================================== */
+
+.form-options {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+.remember {
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    color: #8c95a0;
+
+    font-size: 0.74rem;
+
+    cursor: pointer;
+}
+
+.remember-checkbox {
+    width: 14px;
+    height: 14px;
+
+    accent-color:
+        var(--accent);
+}
+
+
+/* ==========================================
+   MESSAGE
+========================================== */
+
+.message {
+    display: none;
+
+    padding: 10px 13px;
+
+    font-size: 0.73rem;
+
+    line-height: 1.5;
+}
+
+.message.error {
+    display: block;
+
+    color: #ff9baa;
+
+    background:
+        rgba(251, 113, 133, 0.08);
+
+    border:
+        1px solid
+        rgba(251, 113, 133, 0.2);
+}
+
+.message.success {
+    display: block;
+
+    color: #86efac;
+
+    background:
+        rgba(74, 222, 128, 0.08);
+
+    border:
+        1px solid
+        rgba(74, 222, 128, 0.2);
+}
+
+
+/* ==========================================
+   BUTTONS
+========================================== */
+
+.primary-button,
+.secondary-button {
+    width: 100%;
+    height: 52px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 14px;
+
+    font-size: 0.76rem;
+
+    font-weight: 700;
+
+    letter-spacing: 0.4px;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease,
+        background 0.25s ease,
+        color 0.25s ease;
+}
+
+
+/* ==========================================
+   PRIMARY BUTTON
+========================================== */
+
+.primary-button {
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--accent),
+            var(--accent-dark)
+        );
+}
+
+.primary-button:hover {
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 15px 40px
+        rgba(249, 115, 22, 0.25);
+}
+
+.primary-button i {
+    transition:
+        transform 0.25s ease;
+}
+
+.primary-button:hover i {
+    transform:
+        translateX(4px);
+}
+
+
+/* ==========================================
+   SECONDARY BUTTON
+========================================== */
+
+.secondary-button {
+    color: #d8dce1;
+
+    background: transparent;
+
+    border:
+        1px solid
+        var(--border);
+}
+
+.secondary-button:hover {
+    color: white;
+
+    background:
+        rgba(249, 115, 22, 0.06);
+
+    border-color:
+        rgba(249, 115, 22, 0.28);
+
+    transform:
+        translateY(-2px);
+}
+
+
+/* ==========================================
+   DIVIDER
+========================================== */
+
+.divider {
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        auto
+        1fr;
+
+    align-items: center;
+
+    gap: 15px;
+}
+
+.divider span {
+    height: 1px;
+
+    background:
+        var(--border);
+}
+
+.divider p {
+    color: #5a636d;
+
+    font-size: 0.6rem;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+}
+
+
+/* ==========================================
+   LOGIN FOOTER
+========================================== */
+
+.login-footer {
+    margin-top: 28px;
+
+    text-align: center;
+
+    color: #555f69;
+
+    font-size: 0.65rem;
+}
+
+
+/* ==========================================
+   LOADING SCREEN
+========================================== */
+
+.load-screen {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 5000;
+
+    display: grid;
+
+    place-items: center;
+
+    background:
+        rgba(8, 10, 13, 0.94);
+
+    backdrop-filter:
+        blur(10px);
+
+    -webkit-backdrop-filter:
+        blur(10px);
+}
+
+.load-screen.hidden {
+    display: none;
+}
+
+.loader {
+    width: 42px;
+    height: 42px;
+
+    border-radius: 50%;
+
+    border:
+        3px solid
+        rgba(255, 255, 255, 0.1);
+
+    border-top-color:
+        var(--accent-light);
+
+    animation:
+        spin
+        0.8s
+        linear
+        infinite;
+}
+
+@keyframes spin {
+
+    to {
+        transform:
+            rotate(360deg);
+    }
+
+}
+
+
+/* ==========================================
+   PAGE ENTRANCE ANIMATIONS
+========================================== */
+
+.brand-message {
+    opacity: 0;
+
+    animation:
+        brandReveal
+        0.9s
+        cubic-bezier(
+            0.16,
+            1,
+            0.3,
+            1
+        )
+        0.1s
+        forwards;
+}
+
+.login-container {
+    opacity: 0;
+
+    animation:
+        loginReveal
+        0.9s
+        cubic-bezier(
+            0.16,
+            1,
+            0.3,
+            1
+        )
+        0.2s
+        forwards;
+}
+
+@keyframes brandReveal {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(30px);
+
+        filter:
+            blur(5px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+        filter:
+            blur(0);
+    }
+
+}
+
+@keyframes loginReveal {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(24px);
+
+        filter:
+            blur(4px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+        filter:
+            blur(0);
+    }
+
+}
+
+
+/* ==========================================
+   SHORT DESKTOP SCREENS
+========================================== */
+
+@media (max-height: 760px) and (min-width: 701px) {
+
+    .brand-content {
+        padding:
+            35px
+            55px;
+    }
+
+    .brand-message h1 {
+        font-size:
+            clamp(
+                3rem,
+                5.6vw,
+                5.8rem
+            );
+
+        letter-spacing:
+            -5px;
+    }
+
+    .brand-description {
+        margin-top: 20px;
+
+        font-size: 0.88rem;
+    }
+
+    .login-panel {
+        padding:
+            20px
+            45px;
+    }
+
+    .login-heading {
+        margin-bottom: 24px;
+    }
+
+    .login-form {
+        gap: 13px;
+    }
+
+    .input-wrapper {
+        height: 48px;
+    }
+
+    .primary-button,
+    .secondary-button {
+        height: 47px;
+    }
+
+    .login-footer {
+        margin-top: 20px;
+    }
+
+}
+
+
+/* ==========================================
+   TABLET
+========================================== */
+
+@media (max-width: 1000px) and (min-width: 701px) {
+
+    .page {
+        grid-template-columns:
+            1fr
+            1fr;
+    }
+
+    .brand-content {
+        padding:
+            40px;
+    }
+
+    .brand-message h1 {
+        letter-spacing:
+            -5px;
+    }
+
+    .login-panel {
+        padding:
+            30px;
+    }
+
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 700px) {
+
+    html,
+    body {
+        height: auto;
+
+        min-height: 100%;
+
+        overflow-x: hidden;
+
+        overflow-y: auto;
+    }
+
+    .page {
+        display: block;
+
+        height: auto;
+
+        min-height: 100dvh;
+    }
+
+    .brand-panel {
+        display: none;
+    }
+
+    .login-panel {
         width: 100%;
-    }
-    .img-wrapper img {
-        display: none;
+
+        height: auto;
+
+        min-height: 100dvh;
+
+        padding:
+            35px
+            22px;
+
+        overflow: visible;
     }
 
-    .img-wrapper h1 {
-        display: none;
+    .login-container {
+        width: 100%;
+
+        max-width: 430px;
     }
 
-    .login-wrapper > * {
-        margin-bottom: 20px;
+    .mobile-logo {
+        display: block;
+
+        margin-bottom: 45px;
     }
 
-    .login-wrapper .info {
-        font-size: 1.6rem;
+    .login-heading {
+        margin-bottom: 32px;
     }
 
-    form .border {
-        padding: 0 20px;
-    }
-    
-    form > * {
-        margin-bottom: 10px;
+    .login-heading h2 {
+        font-size: 2.15rem;
     }
 
-    .frgt-pw h2 {
-        font-size: .8rem;
+    .login-form {
+        gap: 18px;
     }
 
-    label {
-        font-size: .8rem;
+}
+
+
+/* ==========================================
+   SMALL MOBILE
+========================================== */
+
+@media (max-width: 400px) {
+
+    .login-panel {
+        padding:
+            28px
+            18px;
     }
+
+    .mobile-logo {
+        margin-bottom: 35px;
+    }
+
+    .login-heading h2 {
+        font-size: 1.9rem;
+    }
+
+    .input-wrapper {
+        height: 52px;
+    }
+
+    .primary-button,
+    .secondary-button {
+        height: 50px;
+    }
+
+}
+
+
+/* ==========================================
+   REDUCED MOTION
+========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration:
+            0.01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        transition-duration:
+            0.01ms !important;
+    }
+
+    .brand-message,
+    .login-container {
+        opacity: 1;
+
+        transform: none;
+
+        filter: none;
+    }
+
 }

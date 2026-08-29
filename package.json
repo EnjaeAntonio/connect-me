@@ -1,0 +1,25 @@
+{
+  "name": "connect-me",
+  "version": "1.0.0",
+  "description": "- [🎥 Demo](https://enjaeantonio.github.io/connect-me) - [🔒 Login Page](#🔐-login-page) - [🏠 Home Page](#🏠-home-page) - [🙎‍♀️ Random User API](#🙎‍♀️-random-user-api)",
+  "main": "index.js",
+  "scripts": {
+    "start": "vite --open",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EnjaeAntonio/connect-me.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/EnjaeAntonio/connect-me/issues"
+  },
+  "homepage": "https://github.com/EnjaeAntonio/connect-me#readme",
+  "devDependencies": {
+    "vite": "^8.2.2"
+  }
+}
